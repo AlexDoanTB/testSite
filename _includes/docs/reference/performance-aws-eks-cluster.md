@@ -2,14 +2,14 @@
 {:toc}
 <!-- This will parse content of HTML tags as markdown when uncomment {::options parse_block_html="true" /} -->
 
-ThingsBoard is used in production by numerous companies in both [monolithic](/docs/{{docsPrefix}}reference/monolithic/)
-and [microservices](/docs/{{docsPrefix}}reference/msa/) (msa) deployment modes. 
+ThingsBoard platform is used in production by numerous companies in both [monolithic](/docs/{{docsPrefix}}reference/monolithic/)
+and [microservices](/docs/{{docsPrefix}}reference/msa/) (msa) deployment modes. Even though the monolithic architecture is sufficient for large device fleet, we recommend moving to a microservice clusters once the system eventually faces the 2000 datapoints per second load. The vertical scaling of the node (switching to a larger instance or adding more processing resources to the existing server) is less reliable solution compating to the real cluster setup. With [ThingsBoard Cloud](https://thingsboard.cloud), we provided many tests before the official launch. We learned a lot, and we are still learning.  
 
-This article describes the performance that the ThingsBoard msa installation has shown in the most popular or extreme usage scenarios. The documentation is helpful to better understand how ThingsBoard scales horizontally (**clustering**), where and how one should tune the platform to cope with large device fleet.
+This article describes the performance that the ThingsBoard msa installation has shown in the most popular or extreme usage scenarios. The documentation is helpful to better understand how ThingsBoard scales horizontally (**clustering**), where and how one should tune the platform to cope with large device fleet or enormous data injections.
 
 ## Test methodology
 
-The goal is to test the ThingsBoard cluster resilience and performance while many agents provision and connect a configurable number of device emulators that constantly publish time-series data over MQTT. We used the AWS EKS infrastructure for ThingsBoard; the respective helm charts were exercised to simplify the deployment of 3rd parties (PostgreSQL, Cassandra, Kafka, Zookeeper, and Redis).
+The goal is to test the ThingsBoard cluster resilience and performance while many agents provision and connect a configurable number of device emulators that constantly publish time-series data over MQTT. So at least two benchmarking categories &emdash; We used the AWS EKS infrastructure for the ThingsBoard cluster; the respective helm charts were exercised to simplify the deployment of 3rd parties (PostgreSQL, Cassandra, Kafka, Zookeeper, and Redis). All the steps below are reproducable. 
 
 ## Setup cluster on AWS EKS
 
