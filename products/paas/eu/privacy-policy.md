@@ -10,7 +10,7 @@ description: ThingsBoard Cloud Privacy Policy
 
 <br>
 <h2> Privacy Policy Statement on the Use of this Service (Website)</h2>
-<p style="font-size: 0.8em; color: grey">As of December 24, 2020</p> 
+<p style="font-size: 0.8em; color: grey">As of November 17, 2025</p> 
 
 <br>
 
